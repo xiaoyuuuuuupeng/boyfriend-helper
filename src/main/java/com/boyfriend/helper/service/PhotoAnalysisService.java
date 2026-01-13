@@ -2,7 +2,6 @@ package com.boyfriend.helper.service;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.messages.UserMessage;
-import org.springframework.ai.model.Media;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
@@ -37,12 +36,8 @@ public class PhotoAnalysisService {
                 语气要幽默、鼓励，但针针见血。
                 """;
 
-        UserMessage userMessage = new UserMessage(promptText,
-                List.of(new Media(mimeType, resource)));
 
-        return chatClient.prompt()
-                .messages(userMessage)
-                .call()
-                .content();
+
+        return "";
     }
 }

@@ -4,9 +4,14 @@ spring:
   ai:
     dashscope:
       api-key: sk-abcad200635a47e59663d92f058196b9
+      image:
+        options:
+          model: wan2.6-image # Using VL model for image understanding
+          #model: wanx2.1-imageedit # Using VL model for image understanding
       chat:
         options:
-          model: qwen-vl-max # Using VL model for image understanding
+          model: wan2.6-image # Using VL model for image understanding
+         # model: qwen-image-edit-plus # Using VL model for image understanding
 
 server:
   port: 8999
@@ -14,8 +19,8 @@ server:
 
 prompt:
   template:
-    Image-Edit:
-      """你是一位资深摄影师，正在指导摄影新手如何根据拍摄对象设计动作。你的核心任务是根据提供的场景和人物，生成一张该场景下的特写示意图。这张图需使用简洁的白色线条勾勒出人体动作轮廓，但**不显示任何具体的身体部位、面部或道具细节**，仅保留动作的示意线条。
+    photo-edit:
+      "你是一位资深摄影师，正在指导摄影新手如何根据拍摄对象设计动作。你的核心任务是根据提供的场景和人物，生成一张该场景下的特写示意图。这张图需使用简洁的白色线条勾勒出人体动作轮廓，但**不显示任何具体的身体部位、面部或道具细节**，仅保留动作的示意线条。
   
   **图片要求：**
   1. **纯轮廓示意**：只用白色线条描绘人体姿态的边界，线条应连贯、轻盈，不填充。
@@ -26,6 +31,6 @@ prompt:
   
   **输出格式：**
   仅生成一张纯视觉示意图，无需解释。新手将通过这张图直观理解如何指导模特摆出相应动作。
-  """
+  "
 
 
