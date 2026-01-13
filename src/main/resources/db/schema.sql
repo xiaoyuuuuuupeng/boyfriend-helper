@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS `user` (
+    `id` BIGINT AUTO_INCREMENT PRIMARY KEY,
+    `phone` VARCHAR(20) NOT NULL UNIQUE COMMENT 'Phone number',
+    `nickname` VARCHAR(50) DEFAULT NULL COMMENT 'Nickname',
+    `avatar_url` VARCHAR(255) DEFAULT NULL COMMENT 'Avatar URL',
+    `create_time` DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Creation time',
+    `update_time` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Update time',
+    `deleted` TINYINT DEFAULT 0 COMMENT 'Logic delete flag (0: normal, 1: deleted)'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='User table';

@@ -12,7 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/api/image")
+@RequestMapping("/api/photo")
 @CrossOrigin(origins = "*")
 public class PhotoPoseGuidanceController {
 

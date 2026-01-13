@@ -1,6 +1,8 @@
 # DashScopeImageController类的image方法
-POST http://localhost:8999/api/image/editByUrl?url=http://dxcdn.bookspxyc.xyz/111.jpg
+POST http://localhost:8999/api/photo/editByUrl?url=http://dxcdn.bookspxyc.xyz/111.jpg
 
 ###
 # DashScopeImageController类的multipleConditions方法
-GET http://localhost:10008/example/image/multipleConditions
+#POST http://localhost:8999/api/photo/analyzeByUrl?url=http://dxcdn.bookspxyc.xyz/111.jpg&sessionId=123
+POST http://localhost:8999/api/photo/analyzeByUrl?url=http://dxcdn.bookspxyc.xyz/4C19B229-3C66-4ED5-91F5-EE4E1F21D17C_1_105_c.jpeg&sessionId=123
+

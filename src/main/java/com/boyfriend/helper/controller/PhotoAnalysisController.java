@@ -8,7 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/photo")
 @CrossOrigin(origins = "*") // Allow access from all clients for now
 public class PhotoAnalysisController {
 
@@ -18,15 +18,30 @@ public class PhotoAnalysisController {
         this.photoAnalysisService = photoAnalysisService;
     }
 
+    @PostMapping("/analyzeByUrl")
+    public ResponseEntity<?> analyzePhotoByUrl(@RequestParam("url") String url,
+                                               @RequestParam("sessionId")String sessionId) {
+        if (url.isEmpty()) {
+            return ResponseEntity.badRequest().body("请上传一张照片");
+        }
+
+        try {
+            return photoAnalysisService.analyzePhoto(url,sessionId);
+        } catch (IOException e) {
+            return ResponseEntity.internalServerError().body("处理照片时出错: " + e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body("AI服务暂时不可用: " + e.getMessage());
+        }
+    }
     @PostMapping("/analyze")
-    public ResponseEntity<String> analyzePhoto(@RequestParam("file") MultipartFile file) {
+    public ResponseEntity<?> analyzePhoto(@RequestParam("file") MultipartFile file,
+                                          @RequestParam("sessionId")String sessionId) {
         if (file.isEmpty()) {
             return ResponseEntity.badRequest().body("请上传一张照片");
         }
 
         try {
-            String analysis = photoAnalysisService.analyzePhoto(file);
-            return ResponseEntity.ok(analysis);
+            return photoAnalysisService.analyzePhoto("",sessionId);
         } catch (IOException e) {
             return ResponseEntity.internalServerError().body("处理照片时出错: " + e.getMessage());
         } catch (Exception e) {
