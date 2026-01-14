@@ -1,15 +1,8 @@
-# DashScopeImageController类的image方法
-POST http://localhost:8999/api/photo/editByUrl?url=http://dxcdn.bookspxyc.xyz/111.jpg
 
-###
-# DashScopeImageController类的multipleConditions方法
-#POST http://localhost:8999/api/photo/analyzeByUrl?url=http://dxcdn.bookspxyc.xyz/111.jpg&sessionId=123
+### 测试分析图片
 POST http://localhost:8999/api/photo/analyzeByUrl?url=http://dxcdn.bookspxyc.xyz/4C19B229-3C66-4ED5-91F5-EE4E1F21D17C_1_105_c.jpeg&sessionId=123
-###
-#POST  http://localhost:8999/api/test/analyzeByUrl?url=http://dxcdn.bookspxyc.xyz/4C19B229-3C66-4ED5-91F5-EE4E1F21D17C_1_105_c.jpeg&sessionId=123
-POST http://localhost:8999/api/test/analyzeByUrl?url=http://dxcdn.bookspxyc.xyz/4C19B229-3C66-4ED5-91F5-EE4E1F21D17C_1_105_c.jpeg&sessionId=123
 
-###
+### 测试修改图片
 #POST  http://localhost:8999/api/test/analyzeByUrl?url=http://dxcdn.bookspxyc.xyz/4C19B229-3C66-4ED5-91F5-EE4E1F21D17C_1_105_c.jpeg&sessionId=123
 POST http://localhost:8999/api/test/editByUrl?url=http://dxcdn.bookspxyc.xyz/057df6567s4eee0a1f3a990a580a2fe9.jpg&sessionId=123
 

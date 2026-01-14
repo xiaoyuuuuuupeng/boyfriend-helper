@@ -53,8 +53,10 @@ server:
   port: 8999
 
 
-
-
+qiniu:
+  AK: WeSspogfYgwhYbiJ5ajOlJ3jV5tfZEym9xIlJfNt
+  SK: tviquYSiEHxXLO3tpyl6KiZeYReD6fT0fqsu3-tr
+  bucketName: boyfriend-helper
 
 langchain4j:
   open-ai:

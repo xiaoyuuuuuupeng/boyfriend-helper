@@ -1,32 +1,25 @@
 package com.boyfriend.helper.controller;
 
-import com.boyfriend.helper.agents.PhotoAdjustAgent;
-import com.boyfriend.helper.agents.PhotoEditAgent;
 import com.boyfriend.helper.agents.PhotoPoseAdjustAgent;
 import com.boyfriend.helper.common.PromptConstants;
-import com.boyfriend.helper.model.AnalysisRequest;
 import dev.langchain4j.agentic.UntypedAgent;
 import dev.langchain4j.data.message.ImageContent;
 import dev.langchain4j.data.message.TextContent;
 import dev.langchain4j.data.message.UserMessage;
 import dev.langchain4j.model.chat.ChatModel;
 import dev.langchain4j.model.chat.response.ChatResponse;
-import dev.langchain4j.model.openai.OpenAiChatModel;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
 import java.util.Map;
-
-import static dev.langchain4j.model.openai.OpenAiChatModelName.GPT_4_O_MINI;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/test")
+@RequestMapping("/api/photo")
 @RequiredArgsConstructor
-public class Langchain4jController {
+public class PhotoHelperController {
 
     private final PhotoPoseAdjustAgent photoPoseAdjustAgent;
     private final ChatModel chatLanguageModel;
