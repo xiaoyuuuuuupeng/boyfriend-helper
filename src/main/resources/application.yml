@@ -2,6 +2,16 @@ spring:
   application:
     name: boyfriend-helper
   ai:
+    openai:
+      api-key: c9588b77-d690-46c7-b3d4-a9561eadb7bd
+      base-url: https://ark.cn-beijing.volces.com/api/
+      chat:
+        options:
+          model: doubao-seedream-4-5-251128
+          multi-model: true
+        completions-path: /v3/chat/c
+      image:
+        images-path: /v3/images/generations
     dashscope:
       api-key: sk-abcad200635a47e59663d92f058196b9
       image:
@@ -13,14 +23,12 @@ spring:
           model: qwen3-vl-flash # Using VL model for image understanding
           multi-model: true
           enable-thinking: false
-      timeout: 60000
-      retry: 3
 
-#  datasource:
-#    url: jdbc:mysql://localhost:3306/boyfriend_helper?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
-#    username: user
-#    password: password
-#    driver-class-name: com.mysql.cj.jdbc.Driver
+  datasource:
+    url: jdbc:mysql://106.14.151.113:3306/boyfriend_helper?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123452pxy
+    driver-class-name: com.mysql.cj.jdbc.Driver
 #
 #  sql:
 #    init:
@@ -45,20 +53,12 @@ server:
   port: 8999
 
 
-prompt:
-  template:
-    photo-edit:
-      "你是一位资深摄影师，正在指导摄影新手如何根据拍摄对象设计动作。你的核心任务是根据提供的场景和人物，生成一张该场景下的特写示意图。这张图需使用简洁的白色线条勾勒出人体动作轮廓，但**不显示任何具体的身体部位、面部或道具细节**，仅保留动作的示意线条。
-  
-  **图片要求：**
-  1. **纯轮廓示意**：只用白色线条描绘人体姿态的边界，线条应连贯、轻盈，不填充。
-  2. **隐藏实体**：确保不出现真实的人物、五官、服装或道具（即使原图有道具，轮廓中也不体现道具形状）。
-  3. **背景与场景**：保持与原图一致的背景环境，但仅对人物动作进行线框勾勒，其他物品不可用线条描绘。
-  4. **无文字标注**：示意图中不要出现任何文字、箭头或说明符号。
-  5. **动作适配**：根据原图人物特征（如小朋友持道具）设计符合场景的舒展动作，例如“伸手展示”“侧身互动”等适合拍摄的姿势。
-  
-  **输出格式：**
-  仅生成一张纯视觉示意图，无需解释。新手将通过这张图直观理解如何指导模特摆出相应动作。
-  "
 
 
+
+langchain4j:
+  open-ai:
+    chat-model:
+      api-key: ${OPENAI_API_KEY:c9588b77-d690-46c7-b3d4-a9561eadb7bd}
+      model-name: doubao-seed-1-8-251228
+      base-url: https://ark.cn-beijing.volces.com/api/v3/

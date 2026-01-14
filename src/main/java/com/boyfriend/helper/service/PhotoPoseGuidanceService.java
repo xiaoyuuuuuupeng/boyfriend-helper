@@ -2,6 +2,7 @@ package com.boyfriend.helper.service;
 
 import com.alibaba.cloud.ai.dashscope.image.DashScopeImageModel;
 import com.alibaba.cloud.ai.dashscope.image.DashScopeImageOptions;
+import com.boyfriend.helper.common.PromptConstants;
 import com.boyfriend.helper.model.EditPhotoRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.image.*;
@@ -18,11 +19,6 @@ import java.util.Map;
 @Slf4j
 public class PhotoPoseGuidanceService {
 
-    //prompt:
-    //  template:
-    //    photo-edit:
-    @Value("${prompt.template.photo-edit}")
-    private String photoEditPromptTemplate;
 
     private final DashScopeImageModel imageModel;
 
@@ -42,7 +38,7 @@ public class PhotoPoseGuidanceService {
 
         log.info("modeName:{}", imageModel.getOptions().getModel());
         try {
-            ImageResponse response = imageModel.call(new ImagePrompt(photoEditPromptTemplate, options));
+            ImageResponse response = imageModel.call(new ImagePrompt(PromptConstants.PHOTO_EDIT_PROMPT, options));
             log.info("response:{}", response);
             log.info("url:{}", response.getResult().getOutput());
             return ResponseEntity.ok(response.getResult().getOutput());

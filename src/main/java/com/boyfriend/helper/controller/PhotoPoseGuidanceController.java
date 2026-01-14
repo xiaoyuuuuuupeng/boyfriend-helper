@@ -1,6 +1,7 @@
 package com.boyfriend.helper.controller;
 
 
+import com.boyfriend.helper.common.PromptConstants;
 import com.boyfriend.helper.model.EditPhotoRequest;
 import com.boyfriend.helper.service.PhotoAnalysisService;
 import com.boyfriend.helper.service.PhotoPoseGuidanceService;
@@ -24,30 +25,33 @@ public class PhotoPoseGuidanceController {
         this.photoUploadService = photoUploadService;
     }
 
-    //http://dxcdn.bookspxyc.xyz/111.jpg
-    @PostMapping("/edit")
-    public ResponseEntity<?> editPhoto(@RequestParam("file") MultipartFile file,
-                                            @RequestParam(value = "height", defaultValue = "1024") Integer height,
-                                            @RequestParam(value = "width", defaultValue = "1024") Integer width) {
-        if (file.isEmpty()) {
-            return ResponseEntity.badRequest().body("请上传一张照片");
-        }
-
-        //upload cdn first
-        String url = photoUploadService.upload(file);
-        EditPhotoRequest request = new EditPhotoRequest(height, width, url);
-        return photoPoseGuidanceService.editPhoto(request);
-    }
+//    @PostMapping("/edit")
+//    public ResponseEntity<?> editPhoto(@RequestParam("file") MultipartFile file,
+//                                       @RequestParam(value = "height", defaultValue = "1024") Integer height,
+//                                       @RequestParam(value = "width", defaultValue = "1024") Integer width,
+//                                       @RequestParam(value = "model", defaultValue = "doubao") String model) {
+//        if (file.isEmpty()) {
+//            return ResponseEntity.badRequest().body("请上传一张照片");
+//        }
+//
+//        //upload cdn first
+//        String url = photoUploadService.upload(file);
+//        EditPhotoRequest request = new EditPhotoRequest(height, width, url, model);
+//        return photoPoseGuidanceService.editPhoto(request);
+//    }
 
 
     @PostMapping("/editByUrl")
-    public ResponseEntity<?> editByUrl(@RequestParam("url")String url,
-                                            @RequestParam(value = "height", defaultValue = "1024") Integer height,
-                                            @RequestParam(value = "width", defaultValue = "1024") Integer width) {
+    public ResponseEntity<?> editByUrl(@RequestParam("url") String url,
+                                       @RequestParam(value = "height", defaultValue = "1024") Integer height,
+                                       @RequestParam(value = "width", defaultValue = "1024") Integer width,
+                                       @RequestParam(value = "model", defaultValue = "doubao") String model,
+                                       @RequestParam(value = "prompt",defaultValue = PromptConstants.PHOTO_EDIT_PROMPT)
+                                           String prompt) {
         if (url.isEmpty()) {
             return ResponseEntity.badRequest().body("请上传一张照片");
         }
-        EditPhotoRequest request = new EditPhotoRequest(height, width, url);
+        EditPhotoRequest request = new EditPhotoRequest(height, width, url, model,prompt);
         return photoPoseGuidanceService.editPhoto(request);
     }
 }

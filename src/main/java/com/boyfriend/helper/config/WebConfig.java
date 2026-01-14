@@ -1,16 +1,16 @@
 package com.boyfriend.helper.config;
 
-import com.boyfriend.helper.interceptor.AuthenticationInterceptor;
-import lombok.RequiredArgsConstructor;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+//import com.boyfriend.helper.interceptor.AuthenticationInterceptor;
+//import lombok.RequiredArgsConstructor;
+//import org.springframework.context.annotation.Configuration;
+//import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+//import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-@Configuration
-@RequiredArgsConstructor
-public class WebConfig implements WebMvcConfigurer {
-
-    private final AuthenticationInterceptor authenticationInterceptor;
+//@Configuration
+//@RequiredArgsConstructor
+//public class WebConfig implements WebMvcConfigurer {
+//
+//    private final AuthenticationInterceptor authenticationInterceptor;
 
 //    @Override
 //    public void addInterceptors(InterceptorRegistry registry) {
@@ -18,4 +18,4 @@ public class WebConfig implements WebMvcConfigurer {
 //                .addPathPatterns("/api/**")
 //                .excludePathPatterns("/api/auth/**"); // Exclude login/register/code endpoints
 //    }
-}
+//}
